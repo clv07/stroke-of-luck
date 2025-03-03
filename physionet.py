@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Feb 16 17:45:39 2025
+
+@author: Manolis
+"""
+
 import random
 import os
 import argparse
@@ -12,7 +19,7 @@ from helper_code import *
 
 
 ### Read in 12SL statements per TestID
-stmnts_dir = "C:\\Documents\\Code\\PhysioNet_2020-1\\12SL\\PTBXL\\"
+stmnts_dir = "C:\\Users\\gaogr\\school\\senior_spring\\UW-GEHC Collaboration\\PTBXL\\"
 df_stmnts = pd.read_csv(stmnts_dir + '12slv24_stt.csv')
 print(df_stmnts.columns)
 
@@ -34,8 +41,8 @@ print('%d records in the PTBXL dataset with MI-related diagnoses from 12SL' %
     
 
 ### Read in filenames for PhysioNet headers and recordings
-trainingset_dir = 'C:\\Data\\WFDB_PTBXL\\'
-header_files, recording_files = find_challenge_files(trainingset_dir)
+trainingset_dir = 'C:\\Users\\gaogr\\school\\senior_spring\\UW-GEHC Collaboration\\header'
+header_files = find_challenge_files(trainingset_dir)
 num_recordings = len(header_files)
 print(' %d records found' % num_recordings)
 
@@ -70,11 +77,14 @@ MI_stmnts_Phys = [57054005, ## acute myocardial infarction
 MI_stmnts_Phys = set(MI_stmnts_Phys)
 df_stmnts['MI_Phys'] = 0
 for MI_stmnt in MI_stmnts_Phys: 
+    df_stmnts['Statements_Phys'] = df_stmnts['Statements_Phys'].astype(str)
     df_stmnts.loc[df_stmnts['Statements_Phys'].str.contains('|%d|'%MI_stmnt,regex=False), 'MI_Phys'] = 1
 print('%d records in the PTBXL dataset with MI-related diagnoses from Physician' %
       df_stmnts['MI_Phys'].sum() )
 
 df_missedMI = df_stmnts.loc[(df_stmnts['MI_Phys']==1) & (df_stmnts['MI_12SL']==0)]
+print(f'Physician codes: {df_stmnts['Statements_Phys']}')
+print(f'12SL codes: {df_stmnts['Statements']}')
 print(' %d Records with MI diagnosis from Physician that were missed by 12SL :' % len(df_missedMI))
 for testID in df_missedMI['TestID'].values[:300]: 
     print(testID, ',')
@@ -103,3 +113,4 @@ mappings_dir = "C:\\Documents\\Code\\PhysioNet_2020-1\\evaluation-2021\\"
 dx_scored = pd.read_csv(mappings_dir + 'dx_mapping_scored.csv')
 dx_unscored = pd.read_csv(mappings_dir + 'dx_mapping_unscored.csv')
 '''
+
