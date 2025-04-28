@@ -2,7 +2,7 @@
 [Repository Link](https://github.com/clv07/stroke-of-luck)
 
 ## Project Overview
-12SL is the algorithm used by GE Healthcare Physicians in determining Myocardial Infarction (MI), or heart attack in a more common term from patients' electrocardiogram (ECG). We are training a machine learning model to assist physicians in quicker and more accurate clinical decisions making, especially under an emergency conditions. Our main goal from the model training is to reduce false negatives, where 12SL fails to detect MI when there's MI determined by physicians.
+12SL is the algorithm used by GE Healthcare Physicians in determining Myocardial Infarction (MI), or heart attack in a more common term from patients' electrocardiogram (ECG). We are training a machine learning model to assist physicians in quicker and more accurate clinical decisions making, especially under emergency conditions. Our main goal from the model training is to reduce false negatives, where 12SL fails to detect MI when there's MI determined by physicians.
 
 ## Installation and Setup
 1. Clone the repository.
@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ```
 4. Run the script.
 ```
- 
+python3 mi_detection.py
 ```
 
 ## Code Structure
@@ -30,7 +30,7 @@ We first read in the ECG data provided by our mentors along with header files fr
 ### Model Overview
 Our model is designed as a two-pass ensemble system that improves upon the 12SL algorithm for detecting myocardial infarction (MI) from ECG data, with a particular focus on reducing false negatives and improving diagnostic precision.
 
-In the first pass, the model separately classifies ECG signals into either Positive (likely MI) or Negative (likely Non-MI, NMI) categories. We trained two separate Light Gradient Boosting Machine (LightGBM) classifiers. One model focuses on False Positive cases, while another model focuses on False Negative cases.
+In the first pass, the model classifies ECG signals as either Positive (likely MI) or Negative (likely Non-MI, NMI) categories. We trained two separate Light Gradient Boosting Machine (LightGBM) classifiers. One model focuses on false positive cases, while the other model focuses on false negative cases.
 
 These two models handle misclassifications from the 12SL outputs and provide improved initial categorization.
 
@@ -43,7 +43,7 @@ This two-pass ensemble approach enables better correction of 12SL’s misclassif
 ![Machine Learning Model Design](readme_images/models.png)
 
 ### Example Report Output
-After running the model, we generate a final prediction report for each ECG case.
+After running the model, we generate a final prediction report based on the sample ECG file. 
 The report contains:
 1. Predicted MI Status: Indicates whether the model classifies the ECG as Positive (MI) or Negative (No MI).
 2. Predicted Severity: For Positive cases, further classification into Acute MI or Non-Acute MI.
