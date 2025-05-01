@@ -28,11 +28,11 @@ python3 mi_detection.py
 We first read in the ECG data provided by our mentors along with header files from the [Physionet Challenge](https://moody-challenge.physionet.org/2021/). The data preprocessing step involves merging multiple tables into a single consolidated file, standardizing column names, handling missing values, and then splitting the dataset into false positive and false negative groups for separate model training.
 
 ### Model Overview
-Our model is designed as a two-pass ensemble system using 4 different Light Gradient Boosting Machine (LightGBM) trained upon thousands of ECG records.
+Our model is designed as a two-pass ensemble system using three different Light Gradient Boosting Machine (LightGBM) trained upon thousands of ECG records.
 
-In the first pass, two LightGBM classifiers were trained on false positives and false negatives from the 12SL algorithm to classify cases as MI or non-MI (NMI). Records predicted as NMI are re-evaluated using a second false negative model to reduce the risk of missing true MIs. These three models work together to correct 12SL misclassifications and improve initial categorization.
+In the first pass, two LightGBM classifiers were trained on false positives and false negatives from the 12SL algorithm to classify cases as MI or non-MI (NMI). Records predicted as NMI are re-evaluated using the false negative model to reduce the risk of missing true MIs. These three models work together to correct 12SL misclassifications and improve initial categorization.
 
-In the second pass, a fourth LightGBM model further classifies MI cases as acute or non-acute, enabling more precise identification of urgent conditions.
+In the second pass, a third LightGBM model further classifies MI cases as acute or non-acute, enabling more precise identification of urgent conditions.
 
 ![Machine Learning Model Design](readme_images/models.png)
 
@@ -44,13 +44,13 @@ The report contains:
 3. Model Interpretation: A SHAP graph showing feature importance rankings, and a decision tree illustrating how the models make their classification decisions.
 
 ## Achievements
-Our model achieved strong model accuracy in improving MI detection. The first model achieved an F1 score of 0.95. The second model achieved an F1 score of 0.65. The third model achieved an F1 score of 0.65.
+Our model achieved strong model accuracy in improving MI detection. The first model achieved an F1 score of 0.95. The second model achieved an F1 score of 0.65. 
 
 Our model achieves high false positive accuracy, strong feature isolation to eliminate distracting features, and high model interpretability through decision trees.
 
 ## Limitations
 
-The fourth model achieved a relatively low F1 score of 0.33 due to low fidelity in some ECG signals and requires extensive parameter tuning. 
+The third model achieved a relatively low F1 score of 0.33 due to low fidelity in some ECG signals and requires extensive parameter tuning. 
 
 ## Future Work
 
