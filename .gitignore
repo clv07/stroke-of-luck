@@ -1,7 +1,15 @@
-# Byte-compiled / optimized / DLL files
+.venv/
+venv/
+env/
+
 __pycache__/
 *.py[cod]
 *$py.class
+
+*.pyc
+*.pyo
+
+.ipynb_checkpoints/
 
 # C extensions
 *.so
@@ -174,3 +182,4 @@ cython_debug/
 CPSC2018/
 PTBXL/
 Shaoxing/
+.DS_Store
