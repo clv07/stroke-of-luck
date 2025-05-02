@@ -8,17 +8,9 @@
 1. Using Google Colab.
    
    - Open [Jupyter Notebook file](https://colab.research.google.com/github/clv07/stroke-of-luck/blob/main/MI_Detection.ipynb).
-   - Upload the folder "content" in the GitHub main repository.
-   - Select GPU (EDIT -> NOTEBOOK SETTINGS -> GPU)
-   - Run the Jupyter Notebook.
-
-2. Using Python virtual environment.
-    ```
-    git clone https://github.com/clv07/stroke-of-luck.git
-    python3 -m venv venv    
-    pip install -r requirements.txt
-    python3 mi_detection.py
-    ```
+   - Click on the last icon on the left navigation bar, upload all the files in the folder "content" under Google Drive team folder.
+   - Select GPU (EDIT -> NOTEBOOK SETTINGS -> T4 GPU)
+   - Run all the cells in the Jupyter Notebook. 
 
 ## Code Structure
 
