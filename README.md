@@ -12,7 +12,7 @@
    - Select GPU (EDIT -> NOTEBOOK SETTINGS -> GPU)
    - Run the Jupyter Notebook.
 
-2. Using Python virtual environment.
+2. Using Python virtual environment (Alternatively).
     ```
     git clone https://github.com/clv07/stroke-of-luck.git
     python3 -m venv venv    
