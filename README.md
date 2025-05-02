@@ -5,22 +5,20 @@
 12SL is the algorithm used by GE Healthcare Physicians in determining Myocardial Infarction (MI), or heart attack in a more common term from patients' electrocardiogram (ECG). We trained a machine learning model to improve 12SL misclassification by identifying both false positives (missed MI detection) and false negatives (incorrect MI detection). We also further classify MI cases as either acute or non-acute. This enables better evaluation of MI in borderline cases and helps physicians make quicker and more accurate clinical decisions, especially in emergency situations.
 
 ## Installation and Setup
-1. Clone the repository.
-```
-git clone https://github.com/clv07/stroke-of-luck.git
-```
-2. Setup and activate a virtual environment.
-```
-python3 -m venv venv
-```
-3. Install required libraries. 
-```
-pip install -r requirements.txt
-```
-4. Run the script.
-```
-python3 mi_detection.py
-```
+1. Using Google Colab.
+   
+   - Open [Jupyter Notebook file](https://colab.research.google.com/github/clv07/stroke-of-luck/blob/main/MI_Detection.ipynb).
+   - Upload the folder "content" in the GitHub main repository.
+   - Select GPU (EDIT -> NOTEBOOK SETTINGS -> GPU)
+   - Run the Jupyter Notebook.
+
+2. Using Python virtual environment.
+    ```
+    git clone https://github.com/clv07/stroke-of-luck.git
+    python3 -m venv venv    
+    pip install -r requirements.txt
+    python3 mi_detection.py
+    ```
 
 ## Code Structure
 
