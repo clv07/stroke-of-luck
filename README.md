@@ -2,7 +2,7 @@
 [Repository Link](https://github.com/clv07/stroke-of-luck)
 
 ## Project Overview
-12SL is the algorithm used by GE Healthcare Physicians in determining Myocardial Infarction (MI), or heart attack in a more common term from patients' electrocardiogram (ECG). We trained a machine learning model to improve 12SL misclassification by identifying both false positives (missed MI detection) and false negatives (incorrect MI detection). We also further classify MI cases as either acute or non-acute. This enables better evaluation of MI in borderline cases and helps physicians make quicker and more accurate clinical decisions, especially in emergency situations.
+12SL is the algorithm GE Healthcare physicians use to detect myocardial infarction (MI), commonly called a heart attack, from a patient's electrocardiogram (ECG). We trained a machine learning model to improve 12SL misclassification by identifying both false positives (patients flagged as MI who did not have one) and false negatives (MIs that 12SL missed). We also further classify MI cases as either acute or non-acute. This enables better evaluation of MI in borderline cases and helps physicians make quicker and more accurate clinical decisions, especially in emergency situations.
 
 ## Installation and Setup
 1. Using Google Colab.
@@ -20,7 +20,7 @@ We first read in the ECG data provided by our mentors along with header files fr
 ### Model Overview
 Our model is designed as a two-pass ensemble system using three different Light Gradient Boosting Machine (LightGBM) trained upon thousands of ECG records.
 
-In the first pass, two LightGBM classifiers were trained on false positives and false negatives from the 12SL algorithm to classify cases as MI or non-MI (NMI). Records predicted as NMI are re-evaluated using the false negative model to reduce the risk of missing true MIs. These three models work together to correct 12SL misclassifications and improve initial categorization.
+In the first pass, two LightGBM classifiers were trained on false positives and false negatives from the 12SL algorithm to classify cases as MI or non-MI (NMI). Records predicted as NMI are re-evaluated using the false negative model to reduce the risk of missing true MIs. Together, these two models correct 12SL misclassifications and improve the initial categorization.
 
 In the second pass, a third LightGBM model further classifies MI cases as acute or non-acute, enabling more precise identification of urgent conditions.
 
